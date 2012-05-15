@@ -49,7 +49,7 @@ inotifywait -e CLOSE_WRITE --format '%f' -m "${fulldir}" 2>/dev/null | while rea
 	if [[ $? == 0 ]]; then
 		# matched, build pdf
 		echo "rebuilding ${file}.pdf"
-		cd "${fulldir}" && dot -Tpdf "${file}" >"${file}.pdf" && (evince "${file}.pdf" &>/dev/null &)
+		cd "${fulldir}" && dot -Tpdf "${file}" >"${file}.pdf"
 	fi
 done &
 
