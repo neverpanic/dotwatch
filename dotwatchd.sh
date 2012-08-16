@@ -45,7 +45,7 @@ trap 'sigterm' SIGTERM SIGINT
 
 inotifywait -e CLOSE_WRITE --format '%f' -m "${fulldir}" 2>/dev/null | while read file; do
 	set +e
-	grep "${file}" "${watchfile}" >/dev/null
+	grep "^${file}$" "${watchfile}" >/dev/null
 	if [[ $? == 0 ]]; then
 		# matched, build pdf
 		echo "rebuilding ${file}.pdf"
